@@ -1,0 +1,16 @@
+<p>camera works!</p>
+
+<webcam
+  [trigger]="triggerObservable"
+  [videoOptions]="{ width: 640, height: 480 }"
+  (imageCapture)="handleImage($event)"
+  (initError)="handleInitError($event)">
+</webcam>
+<button (click)="triggerSnapshot()">Capturar Imagem</button>
+
+<h3>Imagens Capturadas:</h3>
+<div *ngIf="capturedImages.length > 0">
+  <div *ngFor="let image of capturedImages">
+    <img [src]="image.imageAsDataUrl" alt="Imagem Capturada" />
+  </div>
+</div>
